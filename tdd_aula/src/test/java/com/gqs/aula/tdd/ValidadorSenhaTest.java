@@ -42,4 +42,16 @@ public void deveRejeitarSenhaSemCaractereEspecial() {
     assertTrue(resultado.contains("A senha deve conter pelo menos um caractere especial"));
 }
 
+@Test
+public void deveRetornarTodosOsErrosQuandoSenhaForInvalida() {
+    ValidadorSenha validador = new ValidadorSenha();
+
+    String resultado = validador.validar("mypass");
+
+    assertTrue(resultado.contains("A senha deve ter pelo menos 8 caracteres"));
+    assertTrue(resultado.contains("A senha deve conter pelo menos 2 dígitos"));
+    assertTrue(resultado.contains("A senha deve conter pelo menos uma letra maiuscula"));
+    assertTrue(resultado.contains("A senha deve conter pelo menos um caractere especial"));
+}
+
 }
