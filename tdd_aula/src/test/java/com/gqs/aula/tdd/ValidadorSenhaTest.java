@@ -24,4 +24,13 @@ public void deveRejeitarSenhaComMenosDe2Digitos() {
     assertTrue(resultado.contains("A senha deve conter pelo menos 2 dígitos"));
 }
 
+@Test
+public void deveRejeitarSenhaSemLetraMaiuscula() {
+    ValidadorSenha validador = new ValidadorSenha();
+
+    String resultado = validador.validar("abcdefgh12");
+
+    assertTrue(resultado.contains("A senha deve conter pelo menos uma letra maiuscula"));
+}
+
 }
