@@ -10,6 +10,7 @@ public class ValidadorSenha {
 
         int quantidadeDigitos = 0;
         boolean temLetraMaiuscula = false;
+        boolean temCaractereEspecial = false;
 
         for (char caractere : senha.toCharArray()) {
 
@@ -20,6 +21,10 @@ public class ValidadorSenha {
             if (Character.isUpperCase(caractere)) {
                 temLetraMaiuscula = true;
             }
+
+            if (!Character.isLetterOrDigit(caractere)) {
+                temCaractereEspecial = true;
+            }
         }
 
         if (quantidadeDigitos < 2) {
@@ -28,6 +33,10 @@ public class ValidadorSenha {
 
         if (!temLetraMaiuscula) {
             return "A senha deve conter pelo menos uma letra maiuscula";
+        }
+
+        if (!temCaractereEspecial) {
+            return "A senha deve conter pelo menos um caractere especial";
         }
 
         return "";
