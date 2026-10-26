@@ -1,13 +1,16 @@
 
 package com.gqs.aula.tdd;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ValidadorSenha {
 
-    public String validar(String senha) {
-        String erros = "";
+    public ResultadoValidacao validar(String senha) {
+        List<String> erros = new ArrayList<>();
 
         if (senha.length() < 8) {
-            erros += "A senha deve ter pelo menos 8 caracteres\n";
+            erros.add("A senha deve ter pelo menos 8 caracteres");
         }
 
         int quantidadeDigitos = 0;
@@ -29,17 +32,19 @@ public class ValidadorSenha {
         }
 
         if (quantidadeDigitos < 2) {
-            erros += "A senha deve conter pelo menos 2 dígitos\n";
+            erros.add("A senha deve conter pelo menos 2 dígitos");
         }
 
         if (!temLetraMaiuscula) {
-            erros += "A senha deve conter pelo menos uma letra maiuscula\n";
+            erros.add("A senha deve conter pelo menos uma letra maiuscula");
         }
 
         if (!temCaractereEspecial) {
-            erros += "A senha deve conter pelo menos um caractere especial\n";
+            erros.add("A senha deve conter pelo menos um caractere especial");
         }
 
-        return erros;
+        boolean valido = erros.isEmpty();
+
+        return new ResultadoValidacao(valido, erros);
     }
 }
